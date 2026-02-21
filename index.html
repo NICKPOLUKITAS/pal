@@ -5,46 +5,89 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fúria Alviverde</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
 <style>
+
 body{
     margin:0;
-    font-family: Arial, sans-serif;
-    background:#0f2f1f;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#001f14,#004d2a,#001f14);
     color:white;
-    scroll-behavior:smooth;
+    overflow-x:hidden;
 }
 
 header{
-    background:#006437;
-    padding:20px;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.7);
+    padding:15px;
     text-align:center;
-    position:sticky;
-    top:0;
+    z-index:1000;
+    backdrop-filter: blur(5px);
 }
 
-nav a{
+header a{
     color:white;
     margin:0 15px;
     text-decoration:none;
-    font-weight:bold;
+    font-weight:600;
+}
+
+.hero{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1518091043644-c1d4457512c6') center/cover;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:60px;
+    text-shadow:0 0 20px black;
 }
 
 section{
-    padding:60px 20px;
+    padding:100px 20px;
     text-align:center;
 }
 
 h2{
+    font-size:40px;
     color:#00ff88;
 }
 
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
 .card{
-    background:#1c4d2f;
-    padding:20px;
-    margin:15px;
-    border-radius:10px;
-    display:inline-block;
-    width:250px;
+    background:rgba(0,0,0,0.6);
+    padding:30px;
+    width:220px;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:scale(1.1);
+    background:#006437;
+}
+
+.carousel{
+    position:relative;
+    max-width:800px;
+    margin:auto;
+}
+
+.carousel img{
+    width:100%;
+    border-radius:15px;
 }
 
 button{
@@ -55,126 +98,152 @@ button{
     font-weight:bold;
     cursor:pointer;
     border-radius:5px;
-}
-
-input{
-    padding:8px;
-    margin:5px;
-}
-
-footer{
-    background:#006437;
-    padding:20px;
-    text-align:center;
+    margin:10px;
 }
 
 .hidden{
     display:none;
 }
+
+input{
+    padding:10px;
+    margin:5px;
+    border-radius:5px;
+    border:none;
+}
+
+footer{
+    background:#000;
+    padding:20px;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>💚 Fúria Alviverde 💚</h1>
-<nav>
 <a href="#historia">História</a>
 <a href="#elenco">Elenco</a>
+<a href="#video">Vídeo</a>
 <a href="#quiz">Quiz</a>
 <a href="#bolao">Bolão</a>
 <a href="#secreto">Área Secreta</a>
-<a href="#musica">Música</a>
-</nav>
 </header>
 
+<div class="hero">
+<h1>💚 FÚRIA ALVIVERDE 💚</h1>
+<p>Desde 1914, só os raiz sobrevivem.</p>
+</div>
+
 <section id="historia">
-<h2>📜 Nossa História</h2>
-<p>O grupo <strong>Fúria Alviverde</strong> nasceu da paixão pelo Palmeiras!  
-Criado para zoar, apostar no bolão e viver cada jogo como final!</p>
+<h2>Nossa História</h2>
+<p>O grupo nasceu da paixão pelo Palmeiras, da zoeira eterna e da rivalidade histórica. Aqui é bolão, resenha e fúria alviverde!</p>
 </section>
 
 <section id="elenco">
-<h2>👥 Elenco do Grupo</h2>
+<h2>Elenco</h2>
+<div class="cards">
 <div class="card">ADM Principal</div>
 <div class="card">SEP</div>
 <div class="card">DAY</div>
 <div class="card">Jailson</div>
 <div class="card">Adriano</div>
-</section>
-
-<section id="quiz">
-<h2>🧠 Quiz Palmeirense</h2>
-<p>Quantas Libertadores o Palmeiras tem?</p>
-<button onclick="responder(1)">1</button>
-<button onclick="responder(2)">2</button>
-<button onclick="responder(3)">3</button>
-<p id="resultadoQuiz"></p>
-</section>
-
-<section id="bolao">
-<h2>🏆 Bolão do Grupo</h2>
-<p>Digite seu palpite para o próximo jogo:</p>
-<input type="text" id="nome" placeholder="Seu nome">
-<input type="number" id="palpite" placeholder="Gols do Palmeiras">
-<button onclick="salvarPalpite()">Enviar Palpite</button>
-<p id="listaPalpites"></p>
-</section>
-
-<section id="secreto">
-<h2>🔒 Área Secreta</h2>
-<p>Digite a senha:</p>
-<input type="password" id="senha">
-<button onclick="verificarSenha()">Entrar</button>
-
-<div id="conteudoSecreto" class="hidden">
-<h3>👑 Área VIP Liberada!</h3>
-<p>Somente membros raiz têm acesso 😎</p>
 </div>
 </section>
 
-<section id="musica">
-<h2>🎵 Música do Grupo</h2>
-<audio controls>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+<section>
+<h2>Galeria</h2>
+<div class="carousel">
+<img id="slide" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2">
+</div>
+</section>
+
+<section id="video">
+<h2>Vídeo Especial</h2>
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/1b9S3P9Z6U4" 
+frameborder="0" allowfullscreen></iframe>
+</section>
+
+<section id="quiz">
+<h2>Quiz</h2>
+<p>Em que ano o Palmeiras foi fundado?</p>
+<button onclick="quiz(1914)">1914</button>
+<button onclick="quiz(1910)">1910</button>
+<button onclick="quiz(1920)">1920</button>
+<p id="quizResult"></p>
+</section>
+
+<section id="bolao">
+<h2>Bolão</h2>
+<input type="text" id="nome" placeholder="Nome">
+<input type="number" id="gols" placeholder="Gols">
+<button onclick="apostar()">Enviar</button>
+<p id="lista"></p>
+</section>
+
+<section id="secreto">
+<h2>Área Secreta</h2>
+<input type="password" id="senha" placeholder="Senha">
+<button onclick="verificar()">Entrar</button>
+<div id="vip" class="hidden">
+<h3>Área VIP Liberada 🔥</h3>
+<p>Fúria Alviverde até o fim!</p>
+<audio controls autoplay>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
 </audio>
+</div>
 </section>
 
 <footer>
-<p>💚 Fúria Alviverde © 2026</p>
+💚 Fúria Alviverde © 2026
 </footer>
 
 <script>
-function responder(valor){
-    let resultado = document.getElementById("resultadoQuiz");
-    if(valor === 2){
-        resultado.innerHTML = "✅ Correto! Avanti Palestra!";
-        resultado.style.color = "lime";
-    } else {
-        resultado.innerHTML = "❌ Errado! Estuda mais a história!";
-        resultado.style.color = "red";
-    }
+
+let imagens = [
+"https://images.unsplash.com/photo-1508098682722-e99c43a406b2",
+"https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a",
+"https://images.unsplash.com/photo-1518604666860-9ed391f76460"
+];
+
+let i=0;
+setInterval(()=>{
+i=(i+1)%imagens.length;
+document.getElementById("slide").src=imagens[i];
+},3000);
+
+function quiz(resposta){
+let r=document.getElementById("quizResult");
+if(resposta===1914){
+r.innerHTML="🔥 Correto! Fundação em 1914!";
+r.style.color="lime";
+}else{
+r.innerHTML="❌ Errado!";
+r.style.color="red";
+}
 }
 
-let palpites = [];
-function salvarPalpite(){
-    let nome = document.getElementById("nome").value;
-    let palpite = document.getElementById("palpite").value;
-
-    if(nome && palpite){
-        palpites.push(nome + " apostou " + palpite + " gols");
-        document.getElementById("listaPalpites").innerHTML = palpites.join("<br>");
-    }
+let apostas=[];
+function apostar(){
+let nome=document.getElementById("nome").value;
+let gols=document.getElementById("gols").value;
+if(nome && gols){
+apostas.push(nome+" apostou "+gols+" gols");
+document.getElementById("lista").innerHTML=apostas.join("<br>");
+}
 }
 
-function verificarSenha(){
-    let senha = document.getElementById("senha").value;
-    if(senha === "1914"){
-        document.getElementById("conteudoSecreto").classList.remove("hidden");
-    } else {
-        alert("Senha incorreta!");
-    }
+function verificar(){
+let senha=document.getElementById("senha").value;
+if(senha==="1914"){
+document.getElementById("vip").classList.remove("hidden");
+}else{
+alert("Senha incorreta!");
 }
+}
+
 </script>
 
 </body>
