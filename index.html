@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fúria Alviverde</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0f2f1f;
+    color:white;
+    scroll-behavior:smooth;
+}
+
+header{
+    background:#006437;
+    padding:20px;
+    text-align:center;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    padding:60px 20px;
+    text-align:center;
+}
+
+h2{
+    color:#00ff88;
+}
+
+.card{
+    background:#1c4d2f;
+    padding:20px;
+    margin:15px;
+    border-radius:10px;
+    display:inline-block;
+    width:250px;
+}
+
+button{
+    padding:10px 20px;
+    background:#00aa55;
+    border:none;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+input{
+    padding:8px;
+    margin:5px;
+}
+
+footer{
+    background:#006437;
+    padding:20px;
+    text-align:center;
+}
+
+.hidden{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>💚 Fúria Alviverde 💚</h1>
+<nav>
+<a href="#historia">História</a>
+<a href="#elenco">Elenco</a>
+<a href="#quiz">Quiz</a>
+<a href="#bolao">Bolão</a>
+<a href="#secreto">Área Secreta</a>
+<a href="#musica">Música</a>
+</nav>
+</header>
+
+<section id="historia">
+<h2>📜 Nossa História</h2>
+<p>O grupo <strong>Fúria Alviverde</strong> nasceu da paixão pelo Palmeiras!  
+Criado para zoar, apostar no bolão e viver cada jogo como final!</p>
+</section>
+
+<section id="elenco">
+<h2>👥 Elenco do Grupo</h2>
+<div class="card">ADM Principal</div>
+<div class="card">SEP</div>
+<div class="card">DAY</div>
+<div class="card">Jailson</div>
+<div class="card">Adriano</div>
+</section>
+
+<section id="quiz">
+<h2>🧠 Quiz Palmeirense</h2>
+<p>Quantas Libertadores o Palmeiras tem?</p>
+<button onclick="responder(1)">1</button>
+<button onclick="responder(2)">2</button>
+<button onclick="responder(3)">3</button>
+<p id="resultadoQuiz"></p>
+</section>
+
+<section id="bolao">
+<h2>🏆 Bolão do Grupo</h2>
+<p>Digite seu palpite para o próximo jogo:</p>
+<input type="text" id="nome" placeholder="Seu nome">
+<input type="number" id="palpite" placeholder="Gols do Palmeiras">
+<button onclick="salvarPalpite()">Enviar Palpite</button>
+<p id="listaPalpites"></p>
+</section>
+
+<section id="secreto">
+<h2>🔒 Área Secreta</h2>
+<p>Digite a senha:</p>
+<input type="password" id="senha">
+<button onclick="verificarSenha()">Entrar</button>
+
+<div id="conteudoSecreto" class="hidden">
+<h3>👑 Área VIP Liberada!</h3>
+<p>Somente membros raiz têm acesso 😎</p>
+</div>
+</section>
+
+<section id="musica">
+<h2>🎵 Música do Grupo</h2>
+<audio controls>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+</section>
+
+<footer>
+<p>💚 Fúria Alviverde © 2026</p>
+</footer>
+
+<script>
+function responder(valor){
+    let resultado = document.getElementById("resultadoQuiz");
+    if(valor === 2){
+        resultado.innerHTML = "✅ Correto! Avanti Palestra!";
+        resultado.style.color = "lime";
+    } else {
+        resultado.innerHTML = "❌ Errado! Estuda mais a história!";
+        resultado.style.color = "red";
+    }
+}
+
+let palpites = [];
+function salvarPalpite(){
+    let nome = document.getElementById("nome").value;
+    let palpite = document.getElementById("palpite").value;
+
+    if(nome && palpite){
+        palpites.push(nome + " apostou " + palpite + " gols");
+        document.getElementById("listaPalpites").innerHTML = palpites.join("<br>");
+    }
+}
+
+function verificarSenha(){
+    let senha = document.getElementById("senha").value;
+    if(senha === "1914"){
+        document.getElementById("conteudoSecreto").classList.remove("hidden");
+    } else {
+        alert("Senha incorreta!");
+    }
+}
+</script>
+
+</body>
+</html>
